@@ -12,6 +12,7 @@ import com.wcs.tmshop.R;
 import com.wcs.tmshop.base.BaseActivity;
 import com.wcs.tmshop.base.TestFragment;
 import com.wcs.tmshop.feature.category.CategoryFragment;
+import com.wcs.tmshop.feature.home.HomeFragment;
 
 import butterknife.BindView;
 
@@ -20,7 +21,7 @@ public class MainActivity extends BaseActivity implements OnTabSelectListener{
     @BindView(R.id.bottom_bar)
     BottomBar bottomBar;
 
-    private TestFragment mHomeFragment;//首页
+    private HomeFragment mHomeFragment;//首页
     private CategoryFragment mCategoryFragment;//分类
     private TestFragment mCartFragment;//购物车
     private TestFragment mMineFragment;//我的
@@ -48,7 +49,7 @@ public class MainActivity extends BaseActivity implements OnTabSelectListener{
             case R.id.tab_home:
                 Toast.makeText(this, "首页", Toast.LENGTH_SHORT).show();
                 if (mHomeFragment == null){
-                    mHomeFragment = TestFragment.newInstance("HomeFragment");
+                    mHomeFragment = HomeFragment.newInstance();
                 }
                 //切换fragment
                 switchFragment(mHomeFragment);
@@ -114,7 +115,7 @@ public class MainActivity extends BaseActivity implements OnTabSelectListener{
     //恢复因系统重启造成的Fragmentmanager里面恢复的Fragment
     private void cecoverFragment() {
         FragmentManager manager = getSupportFragmentManager();
-        mHomeFragment = (TestFragment) manager.findFragmentByTag("HomeFragment");
+        mHomeFragment = (HomeFragment) manager.findFragmentByTag(HomeFragment.class.getName());
         mCategoryFragment = (CategoryFragment) manager.findFragmentByTag(CategoryFragment.class.getName());
         mCartFragment = (TestFragment) manager.findFragmentByTag("CartFragment");
         mMineFragment = (TestFragment) manager.findFragmentByTag("MineFragment");

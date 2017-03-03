@@ -40,4 +40,6 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
     //json解析
     compile 'com.google.code.gson:gson:2.8.0'
+    //banner圆点指示器
+    compile 'me.relex:circleindicator:1.2.2@aar'
 }

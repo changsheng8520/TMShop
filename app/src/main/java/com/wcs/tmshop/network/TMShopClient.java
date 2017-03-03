@@ -48,5 +48,23 @@ public class TMShopClient {
         return okHttpClient.newCall(request);
     }
 
+    //首页：banner请求接口
+    public Call getHomeBanner(){
+        Request request = new Request.Builder()
+                .get()
+                .url(BASE_URL + "/home/data")
+                .build();
+        return okHttpClient.newCall(request);
+    }
+
+    //首页：分类和推荐商品
+    public Call getHomeCategory(){
+        Request request = new Request.Builder()
+                .get()
+                .url(BASE_URL + "/home/category")
+                .build();
+        return okHttpClient.newCall(request);
+    }
+
 
 }

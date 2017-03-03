@@ -2,6 +2,8 @@ package com.wcs.tmshop.network;
 
 import com.google.gson.Gson;
 import com.wcs.tmshop.network.entity.CategoryRsp;
+import com.wcs.tmshop.network.entity.HomeBannerRsp;
+import com.wcs.tmshop.network.entity.HomeCategoryRsp;
 
 import org.junit.Test;
 
@@ -25,6 +27,24 @@ public class TMShopClientTest {
         assertTrue(categoryRsp.getmStatus().isSucceed());
     }
 
+    @Test
+    public void getHomeBanner() throws Exception{
+        Call call = TMShopClient.getInstance().getHomeBanner();
+        Response response = call.execute();
+        String string = response.body().string();
+        HomeBannerRsp bannerRsp = new Gson().fromJson(string, HomeBannerRsp.class);
+        assertTrue(bannerRsp.getStatus().isSucceed());
+
+    }
+
+    @Test
+    public void getHomeCategory() throws Exception{
+        Call call = TMShopClient.getInstance().getHomeCategory();
+        Response response = call.execute();
+        String string = response.body().string();
+        HomeCategoryRsp categoryRsp = new Gson().fromJson(string, HomeCategoryRsp.class);
+        assertTrue(categoryRsp.getStatus().isSucceed());
+    }
 
 
 }
